@@ -14,6 +14,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float topPadding = 5;
     [SerializeField] private float bottomPadding = 2;
 
+    Shooter shooter;
+
+    void Awake()
+    {
+        shooter = GetComponent<Shooter>();
+    }
+
     private void Start()
     {
         InitBounds();
@@ -47,6 +54,9 @@ public class Player : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-        
+        if(shooter != null)
+        {
+            shooter.isFiring = value.isPressed;
+        }
     }
 }
